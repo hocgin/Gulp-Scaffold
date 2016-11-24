@@ -52,6 +52,10 @@ var gulp = require('gulp'),
      */
     rimraf = require('rimraf'),
     /**
+     * 删除文件
+     */
+    gulpRimraf = require('gulp-rimraf'),
+    /**
      * 拷贝文件夹
      */
     copyDir = require('copy-dir'),
@@ -261,4 +265,13 @@ gulp.task('auto-backup', function () {
  */
 gulp.task('clean-build', function () {
     console.log("具体问题 具体实现");
+});
+/**
+ * 慎用..
+ */
+gulp.task('reset', function () {
+    return gulp.src([
+        path.backup + '**/*',
+        path.build.dir + '**/*',
+    ], { read: false }).pipe(gulpRimraf());
 });

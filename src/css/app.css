@@ -3,5 +3,4 @@
   padding: 0; }
 
 .demo {
-  -webkit-transform: rotate(45deg);
-          transform: rotate(45deg); }
+  transform: rotate(45deg); }
