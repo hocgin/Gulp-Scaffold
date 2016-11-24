@@ -77,6 +77,7 @@ var path = {
         sass: './src/sass/',
         img: './src/img/',
         oth: './src/oth/',
+        dist: './src/dist/',
     },
     build: {
         dir: './build/',
@@ -86,6 +87,7 @@ var path = {
         sass: './build/sass/',
         img: './build/img/',
         oth: './build/oth/',
+        dist: './build/dist/',
     },
     backup: './backup'
 };
@@ -148,10 +150,10 @@ gulp.task('browser-sync', function () {
     });
 });
 /**
- * 自动压缩
+ * 自动压缩 并 迁移到 ./build文件夹
  * [html,css,js,图片]
  **/
-gulp.task('min', ['min-js', 'min-css', 'min-image', 'rev', 'mv-oth']);
+gulp.task('min', ['min-js', 'min-css', 'min-image', 'rev', 'mv-oth', 'mv-dist']);
 gulp.task('min-js', ['concat-global-js'], function () {
     var srcJs = path.src.js + '**/*.js';
     return gulp.src(srcJs)
@@ -179,6 +181,11 @@ gulp.task('mv-oth', function () {
     var srcOth = path.src.oth + '/**/*';
     return gulp.src(srcOth)
         .pipe(gulp.dest(path.build.oth))
+});
+gulp.task('mv-dist', function () {
+    var srcDist = path.src.dist + '/**/*';
+    return gulp.src(srcDist)
+        .pipe(gulp.dest(path.build.dist))
 });
 /**
  * 处理文件URL引入缓存

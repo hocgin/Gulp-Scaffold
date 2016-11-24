@@ -4,6 +4,7 @@
 |- backup [备份文件夹]
 |- build [压缩后文件夹]
 |- src [源码文件夹]
+    |- dist [存放公有lib包文件夹]
     |- css [css文件]
     |- img [图片]
     |- js [js文件]
